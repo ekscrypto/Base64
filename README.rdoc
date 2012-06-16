@@ -1,19 +1,19 @@
-Base32 Additions for Objective-C on Mac OS X and iOS
+Base64 Additions for Objective-C on Mac OS X and iOS
 =======
 
 
 Usage
 ----
-Open the XCode project file, and drag MF_Base32Additions.m/.h into your project.
+Open the XCode project file, and drag MF_Base64Additions.m/.h into your project.
 
-In files where you want to use Base32 encoding/decoding, simply include the header file and use one of the provided NSData or NSString additions.
+In files where you want to use Base64 encoding/decoding, simply include the header file and use one of the provided NSData or NSString additions.
     
 Example use:
-    #import "MF_Base32Additions.h"
+    #import "MF_Base64Additions.h"
     
     NSString *helloWorld = @"Hello World";
-    NSString *helloInBase32 = [helloWorld stringByEncodingBase32];
-    NSString *helloDecoded = [helloInBase32 stringByDecodingBase32];
+    NSString *helloInBase64 = [helloWorld stringByEncodingBase64];
+    NSString *helloDecoded = [helloInBase64 stringByDecodingBase64];
 
 
 
