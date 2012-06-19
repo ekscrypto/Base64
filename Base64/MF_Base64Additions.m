@@ -36,63 +36,50 @@
             __,__,__,__, __,__,__,__, __,__,__,__, __,__,__,__,  // 0xE0 - 0xEF
             __,__,__,__, __,__,__,__, __,__,__,__, __,__,__,__,  // 0xF0 - 0xFF
         };
-        static NSUInteger paddingAdjustment[4] = {0,1,2,2};
-
         NSData *encodedData = [encoding dataUsingEncoding:NSASCIIStringEncoding];
         unsigned char *encodedBytes = (unsigned char *)[encodedData bytes];
-
+        
         NSUInteger encodedLength = [encodedData length];
         NSUInteger encodedBlocks = (encodedLength * 6) / 24;
         if( encodedLength % 4 != 0 ) {
             encodedBlocks++;
         }
         NSUInteger expectedDataLength = encodedBlocks * 3;
-
+        
         decodedBytes = malloc(expectedDataLength);
         if( decodedBytes != NULL ) {
-
-            unsigned char encodedByte1, encodedByte2, encodedByte3, encodedByte4;
+            
             NSUInteger encodedBytesToProcess = encodedLength;
             NSUInteger encodedBaseIndex = 0;
             NSUInteger decodedBaseIndex = 0;
             unsigned char encodedBlock[4] = {0,0,0,0};
             NSUInteger encodedBlockIndex = 0;
             unsigned char c;
-            while( encodedBytesToProcess-- >= 1 ) {
-                c = encodedBytes[encodedBaseIndex++];
-                if( c == '=' ) break; // padding...
-
-                c = decodingTable[c];
-                if( c == __ ) continue;
-
-                encodedBlock[encodedBlockIndex++] = c;
-                if( encodedBlockIndex == 4 ) {
-                    encodedByte1 = encodedBlock[0];
-                    encodedByte2 = encodedBlock[1];
-                    encodedByte3 = encodedBlock[2];
-                    encodedByte4 = encodedBlock[3];
-                    decodedBytes[decodedBaseIndex] = ((encodedByte1 << 2) & 0xFC) | ((encodedByte2 >> 4) & 0x03);
-                    decodedBytes[decodedBaseIndex+1] = ((encodedByte2 << 4) & 0xF0) | ((encodedByte3 >> 2) & 0x0F);
-                    decodedBytes[decodedBaseIndex+2] = ((encodedByte3 << 6) & 0xC0) | (encodedByte4 & 0x3F);
-                    decodedBaseIndex += 3;
-                    encodedBlockIndex = 0;
+            while( encodedBytesToProcess >= 1 ) {
+                
+                while( encodedBytesToProcess-- >= 1 ) {
+                    c = decodingTable[encodedBytes[encodedBaseIndex++]];
+                    if( c != __ ) {
+                        encodedBlock[encodedBlockIndex++] = c;
+                        if( encodedBlockIndex == 4 ) {
+                            break;
+                        }
+                    }
                 }
+                
+                switch (encodedBlockIndex) {
+                    case 4:
+                        decodedBytes[decodedBaseIndex+2] = ((encodedBlock[2] << 6) & 0xC0) | (encodedBlock[3] & 0x3F);
+                    case 3:
+                        decodedBytes[decodedBaseIndex+1] = ((encodedBlock[1] << 4) & 0xF0) | ((encodedBlock[2] >> 2) & 0x0F);
+                    case 2:
+                        decodedBytes[decodedBaseIndex] = ((encodedBlock[0] << 2) & 0xFC) | ((encodedBlock[1] >> 4) & 0x03);
+                        decodedBaseIndex += encodedBlockIndex-1;
+                }
+                encodedBlockIndex = 0;
             }
-            encodedByte3 = 0;
-            encodedByte2 = 0;
-            switch (encodedBlockIndex) {
-                case 3:
-                    encodedByte3 = encodedBlock[2];
-                case 2:
-                    encodedByte2 = encodedBlock[1];
-                case 1:
-                    encodedByte1 = encodedBlock[0];
-                    decodedBytes[decodedBaseIndex] = ((encodedByte1 << 2) & 0xFC) | ((encodedByte2 >> 4) & 0x03);
-                    decodedBytes[decodedBaseIndex+1] = ((encodedByte2 << 4) & 0xF0) | ((encodedByte3 >> 2) & 0x0F);
-                    decodedBytes[decodedBaseIndex+2] = ((encodedByte3 << 6) & 0xC0);
-            }
-            decodedBaseIndex += paddingAdjustment[encodedBlockIndex];
-            data = [[NSData alloc] initWithBytes:decodedBytes length:decodedBaseIndex];            
+            data = [[NSData alloc] initWithBytes:decodedBytes length:decodedBaseIndex];
+            encodedData = nil;
         }
     }
     @catch (NSException *exception) {
@@ -133,13 +120,13 @@
         //       14 O            31 f            48 w         (pad) =
         //       15 P            32 g            49 x
         //       16 Q            33 h            50 y
-
+        
         NSUInteger dataLength = [data length];
         NSUInteger encodedBlocks = (dataLength * 8) / 24;
         NSUInteger padding = paddingTable[dataLength % 3];
         if( padding > 0 ) encodedBlocks++;
         NSUInteger encodedLength = encodedBlocks * 4;
-
+        
         encodingBytes = malloc(encodedLength);
         if( encodingBytes != NULL ) {
             NSUInteger rawBytesToProcess = dataLength;
@@ -155,7 +142,7 @@
                 encodingBytes[encodingBaseIndex+1] = encodingTable[((rawByte1 << 4) & 0x30) | ((rawByte2 >> 4) & 0x0F) ];
                 encodingBytes[encodingBaseIndex+2] = encodingTable[((rawByte2 << 2) & 0x3C) | ((rawByte3 >> 6) & 0x03) ];
                 encodingBytes[encodingBaseIndex+3] = encodingTable[(rawByte3 & 0x3F)];
-
+                
                 rawBaseIndex += 3;
                 encodingBaseIndex += 4;
                 rawBytesToProcess -= 3;
