@@ -22,7 +22,8 @@ Performance
 ----
 * Encoding: Approximately 4 to 5 times faster than using the equivalent SecTransform.
 * Encoding: 30% faster than https://github.com/l4u/NSData-Base64
-* Decoding: Slightly faster but almost identical decoding time as equivalent SecTransform.
+* Decoding: 5% faster than using the equivalent SecTransform.
+* Decoding: 5% faster than https://github.com/l4u/NSData-Base64
 
 
 
