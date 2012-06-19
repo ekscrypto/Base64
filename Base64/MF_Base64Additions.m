@@ -40,46 +40,44 @@
         unsigned char *encodedBytes = (unsigned char *)[encodedData bytes];
         
         NSUInteger encodedLength = [encodedData length];
-        NSUInteger encodedBlocks = (encodedLength * 6) / 24;
-        if( encodedLength % 4 != 0 ) {
-            encodedBlocks++;
-        }
+        NSUInteger encodedBlocks = (encodedLength+3) >> 2;
         NSUInteger expectedDataLength = encodedBlocks * 3;
+        
+        unsigned char decodingBlock[4];
         
         decodedBytes = malloc(expectedDataLength);
         if( decodedBytes != NULL ) {
             
-            NSUInteger encodedBytesToProcess = encodedLength;
-            NSUInteger encodedBaseIndex = 0;
-            NSUInteger decodedBaseIndex = 0;
-            unsigned char encodedBlock[4] = {0,0,0,0};
-            NSUInteger encodedBlockIndex = 0;
+            NSUInteger i = 0;
+            NSUInteger j = 0;
+            NSUInteger k = 0;
             unsigned char c;
-            while( encodedBytesToProcess >= 1 ) {
-                
-                while( encodedBytesToProcess-- >= 1 ) {
-                    c = decodingTable[encodedBytes[encodedBaseIndex++]];
-                    if( c != __ ) {
-                        encodedBlock[encodedBlockIndex++] = c;
-                        if( encodedBlockIndex == 4 ) {
-                            break;
-                        }
+            while( i < encodedLength ) {
+                c = decodingTable[encodedBytes[i]];
+                i++;
+                if( c != __ ) {
+                    decodingBlock[j] = c;
+                    j++;
+                    if( j == 4 ) {
+                        decodedBytes[k] = (decodingBlock[0] << 2) | (decodingBlock[1] >> 4);                
+                        decodedBytes[k+1] = (decodingBlock[1] << 4) | (decodingBlock[2] >> 2);
+                        decodedBytes[k+2] = (decodingBlock[2] << 6) | (decodingBlock[3]);
+                        j = 0;
+                        k += 3;
                     }
                 }
-                
-                switch (encodedBlockIndex) {
-                    case 4:
-                        decodedBytes[decodedBaseIndex+2] = ((encodedBlock[2] << 6) & 0xC0) | (encodedBlock[3] & 0x3F);
-                    case 3:
-                        decodedBytes[decodedBaseIndex+1] = ((encodedBlock[1] << 4) & 0xF0) | ((encodedBlock[2] >> 2) & 0x0F);
-                    case 2:
-                        decodedBytes[decodedBaseIndex] = ((encodedBlock[0] << 2) & 0xFC) | ((encodedBlock[1] >> 4) & 0x03);
-                        decodedBaseIndex += encodedBlockIndex-1;
-                }
-                encodedBlockIndex = 0;
             }
-            data = [[NSData alloc] initWithBytes:decodedBytes length:decodedBaseIndex];
-            encodedData = nil;
+            
+            // Process left over bytes, if any
+            if( j == 3 ) {
+                decodedBytes[k] = (decodingBlock[0] << 2) | (decodingBlock[1] >> 4);                
+                decodedBytes[k+1] = (decodingBlock[1] << 4) | (decodingBlock[2] >> 2);
+                k += 2;
+            } else if( j == 2 ) {
+                decodedBytes[k] = (decodingBlock[0] << 2) | (decodingBlock[1] >> 4);                
+                k += 1;
+            }
+            data = [[NSData alloc] initWithBytes:decodedBytes length:k];
         }
     }
     @catch (NSException *exception) {
