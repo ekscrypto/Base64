@@ -52,7 +52,14 @@
     NSString *encoded = [_textField stringValue];
     NSData *data = [NSData dataWithBase64String:encoded];
     NSString *raw = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    [_textField setStringValue:raw];
+    if( raw )
+    {
+        [_textField setStringValue:raw];
+    }
+    else
+    {
+        [_textField setStringValue:[NSString stringWithFormat:@"WARNING: data could not be converted to a NSString, dumping decoded binary data: %@", data]];
+    }
 }
 
 @end
