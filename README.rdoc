@@ -1,3 +1,5 @@
+[![CI Status](https://travis-ci.org/ekscrypto/Base64.svg?branch=master)](https://github.com/ekscrypto/Base64)
+
 Base64 Additions for Objective-C on Mac OS X and iOS
 =======
 
