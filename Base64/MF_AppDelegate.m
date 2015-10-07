@@ -11,9 +11,6 @@
 
 @implementation MF_AppDelegate
 
-@synthesize window = _window;
-@synthesize textField = _textField;
-
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     for( int i = 0; i < 300; i++ ) {
@@ -40,17 +37,39 @@
     return [[NSData alloc] initWithBytes:bytes length:dataLength];
 }
 
--(void)encode:(id)sender
+-(IBAction)encode:(id)sender
 {
     NSString *raw = [_textField stringValue];
     NSString *encoded = [raw base64String];
     [_textField setStringValue:encoded];
 }
 
--(void)decode:(id)sender
+-(IBAction)decode:(id)sender
 {
     NSString *encoded = [_textField stringValue];
     NSData *data = [NSData dataWithBase64String:encoded];
+    NSString *raw = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    if( raw )
+    {
+        [_textField setStringValue:raw];
+    }
+    else
+    {
+        [_textField setStringValue:[NSString stringWithFormat:@"WARNING: data could not be converted to a NSString, dumping decoded binary data: %@", data]];
+    }
+}
+
+-(IBAction)encodeBase64UrlEncoding:(id)sender
+{
+    NSString *raw = [_textField stringValue];
+    NSString *encoded = [raw base64UrlEncodedString];
+    [_textField setStringValue:encoded];
+}
+
+-(IBAction)decodeBase64UrlEncoding:(id)sender
+{
+    NSString *encoded = [_textField stringValue];
+    NSData *data = [NSData dataWithBase64UrlEncodedString:encoded];
     NSString *raw = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     if( raw )
     {
