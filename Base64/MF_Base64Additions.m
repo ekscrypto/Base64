@@ -5,8 +5,9 @@
 //
 //  Designed to be compiled with Automatic Reference Counting
 //
-//  Created by Dave Poirier on 12-06-14.
+//  Created by Dave Poirier on 2012-06-14.
 //  Public Domain
+//  Hosted at https://github.com/ekscrypto/Base64
 //
 
 #import "MF_Base64Additions.h"

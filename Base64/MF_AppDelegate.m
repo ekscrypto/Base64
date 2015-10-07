@@ -2,7 +2,7 @@
 //  MF_AppDelegate.m
 //  Base64
 //
-//  Created by Dave Poirier on 12-06-14.
+//  Created by Dave Poirier on 2012-06-14.
 //  Public Domain
 //
 
