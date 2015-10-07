@@ -12,6 +12,34 @@
 #import "MF_Base64Additions.h"
 
 @implementation MF_Base64Codec
+
++(NSString *)base64StringFromBase64UrlEncodedString:(NSString *)base64UrlEncodedString
+{
+    NSString *s = base64UrlEncodedString;
+    s = [s stringByReplacingOccurrencesOfString:@"-" withString:@"+"];
+    s = [s stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
+    switch (s.length % 4) {
+        case 2:
+            s = [s stringByAppendingString:@"=="];
+            break;
+        case 3:
+            s = [s stringByAppendingString:@"="];
+            break;
+        default:
+            break;
+    }
+    return s;
+}
+
++(NSString *)base64UrlEncodedStringFromBase64String:(NSString *)base64String
+{
+    NSString *s = base64String;
+    s = [s stringByReplacingOccurrencesOfString:@"=" withString:@""];
+    s = [s stringByReplacingOccurrencesOfString:@"+" withString:@"-"];
+    s = [s stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+    return s;
+}
+
 +(NSData *)dataFromBase64String:(NSString *)encoding
 {
     NSData *data = nil;
@@ -186,10 +214,18 @@
     NSData *utf8encoding = [self dataUsingEncoding:NSUTF8StringEncoding];
     return [MF_Base64Codec base64StringFromData:utf8encoding];
 }
+-(NSString *)base64UrlEncodedString
+{
+    return [MF_Base64Codec base64UrlEncodedStringFromBase64String:[self base64String]];
+}
 +(NSString *)stringFromBase64String:(NSString *)base64String
 {
     NSData *utf8encoding = [MF_Base64Codec dataFromBase64String:base64String];
     return [[NSString alloc] initWithData:utf8encoding encoding:NSUTF8StringEncoding];
+}
++(NSString *)stringFromBase64UrlEncodedString:(NSString *)base64UrlEncodedString
+{
+    return [self stringFromBase64String:[MF_Base64Codec base64StringFromBase64UrlEncodedString:base64UrlEncodedString]];
 }
 @end
 
@@ -198,8 +234,16 @@
 {
     return [MF_Base64Codec dataFromBase64String:base64String];
 }
++(NSData *)dataWithBase64UrlEncodedString:(NSString *)base64UrlEncodedString
+{
+    return [self dataWithBase64String:[MF_Base64Codec base64StringFromBase64UrlEncodedString:base64UrlEncodedString]];
+}
 -(NSString *)base64String
 {
     return [MF_Base64Codec base64StringFromData:self];
+}
+-(NSString *)base64UrlEncodedString
+{
+    return [MF_Base64Codec base64UrlEncodedStringFromBase64String:[self base64String]];
 }
 @end
