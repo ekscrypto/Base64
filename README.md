@@ -6,7 +6,7 @@ Base64 Additions for Objective-C on Mac OS X and iOS
 
 Usage
 ----
-Open the XCode project file, and drag MF_Base64Additions.m/.h into your project.
+Open the Xcode project file, and drag MF_Base64Additions.m/.h into your project.
 
 In files where you want to use Base64 encoding/decoding, simply include the header file and use one of the provided NSData or NSString additions.
     
