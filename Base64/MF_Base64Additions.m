@@ -153,47 +153,49 @@
         NSUInteger encodedBlocks = (dataLength * 8) / 24;
         NSUInteger padding = paddingTable[dataLength % 3];
         if( padding > 0 ) encodedBlocks++;
-        NSUInteger encodedLength = encodedBlocks * 4;
-        
-        encodingBytes = malloc(encodedLength);
-        if( encodingBytes != NULL ) {
-            NSUInteger rawBytesToProcess = dataLength;
-            NSUInteger rawBaseIndex = 0;
-            NSUInteger encodingBaseIndex = 0;
-            unsigned char *rawBytes = (unsigned char *)[data bytes];
-            unsigned char rawByte1, rawByte2, rawByte3;
-            while( rawBytesToProcess >= 3 ) {
-                rawByte1 = rawBytes[rawBaseIndex];
-                rawByte2 = rawBytes[rawBaseIndex+1];
-                rawByte3 = rawBytes[rawBaseIndex+2];
-                encodingBytes[encodingBaseIndex] = encodingTable[((rawByte1 >> 2) & 0x3F)];
-                encodingBytes[encodingBaseIndex+1] = encodingTable[((rawByte1 << 4) & 0x30) | ((rawByte2 >> 4) & 0x0F) ];
-                encodingBytes[encodingBaseIndex+2] = encodingTable[((rawByte2 << 2) & 0x3C) | ((rawByte3 >> 6) & 0x03) ];
-                encodingBytes[encodingBaseIndex+3] = encodingTable[(rawByte3 & 0x3F)];
-                
-                rawBaseIndex += 3;
-                encodingBaseIndex += 4;
-                rawBytesToProcess -= 3;
-            }
-            rawByte2 = 0;
-            switch (dataLength-rawBaseIndex) {
-                case 2:
-                    rawByte2 = rawBytes[rawBaseIndex+1];
-                case 1:
+        if (encodedBlocks < (NSUIntegerMax / 4)) {
+            NSUInteger encodedLength = encodedBlocks * 4;
+            
+            encodingBytes = malloc(encodedLength);
+            if( encodingBytes != NULL ) {
+                NSUInteger rawBytesToProcess = dataLength;
+                NSUInteger rawBaseIndex = 0;
+                NSUInteger encodingBaseIndex = 0;
+                unsigned char *rawBytes = (unsigned char *)[data bytes];
+                unsigned char rawByte1, rawByte2, rawByte3;
+                while( rawBytesToProcess >= 3 ) {
                     rawByte1 = rawBytes[rawBaseIndex];
+                    rawByte2 = rawBytes[rawBaseIndex+1];
+                    rawByte3 = rawBytes[rawBaseIndex+2];
                     encodingBytes[encodingBaseIndex] = encodingTable[((rawByte1 >> 2) & 0x3F)];
                     encodingBytes[encodingBaseIndex+1] = encodingTable[((rawByte1 << 4) & 0x30) | ((rawByte2 >> 4) & 0x0F) ];
-                    encodingBytes[encodingBaseIndex+2] = encodingTable[((rawByte2 << 2) & 0x3C) ];
-                    // we can skip rawByte3 since we have a partial block it would always be 0
-                    break;
+                    encodingBytes[encodingBaseIndex+2] = encodingTable[((rawByte2 << 2) & 0x3C) | ((rawByte3 >> 6) & 0x03) ];
+                    encodingBytes[encodingBaseIndex+3] = encodingTable[(rawByte3 & 0x3F)];
+                    
+                    rawBaseIndex += 3;
+                    encodingBaseIndex += 4;
+                    rawBytesToProcess -= 3;
+                }
+                rawByte2 = 0;
+                switch (dataLength-rawBaseIndex) {
+                    case 2:
+                        rawByte2 = rawBytes[rawBaseIndex+1];
+                    case 1:
+                        rawByte1 = rawBytes[rawBaseIndex];
+                        encodingBytes[encodingBaseIndex] = encodingTable[((rawByte1 >> 2) & 0x3F)];
+                        encodingBytes[encodingBaseIndex+1] = encodingTable[((rawByte1 << 4) & 0x30) | ((rawByte2 >> 4) & 0x0F) ];
+                        encodingBytes[encodingBaseIndex+2] = encodingTable[((rawByte2 << 2) & 0x3C) ];
+                        // we can skip rawByte3 since we have a partial block it would always be 0
+                        break;
+                }
+                // compute location from where to begin inserting padding, it may overwrite some bytes from the partial block encoding
+                // if their value was 0 (cases 1-2).
+                encodingBaseIndex = encodedLength - padding;
+                while( padding-- > 0 ) {
+                    encodingBytes[encodingBaseIndex++] = '=';
+                }
+                encoding = [[NSString alloc] initWithBytes:encodingBytes length:encodedLength encoding:NSASCIIStringEncoding];
             }
-            // compute location from where to begin inserting padding, it may overwrite some bytes from the partial block encoding
-            // if their value was 0 (cases 1-2).
-            encodingBaseIndex = encodedLength - padding;
-            while( padding-- > 0 ) {
-                encodingBytes[encodingBaseIndex++] = '=';
-            }
-            encoding = [[NSString alloc] initWithBytes:encodingBytes length:encodedLength encoding:NSASCIIStringEncoding];
         }
     }
     @catch (NSException *exception) {
