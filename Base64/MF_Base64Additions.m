@@ -70,6 +70,7 @@
         unsigned char *encodedBytes = (unsigned char *)[encodedData bytes];
         
         NSUInteger encodedLength = [encodedData length];
+        if( encodedLength >= (NSUIntegerMax - 3) ) return nil; // NSUInteger overflow check
         NSUInteger encodedBlocks = (encodedLength+3) >> 2;
         NSUInteger expectedDataLength = encodedBlocks * 3;
         
@@ -150,7 +151,8 @@
         //       16 Q            33 h            50 y
         
         NSUInteger dataLength = [data length];
-        NSUInteger encodedBlocks = (dataLength * 8) / 24;
+        NSUInteger encodedBlocks = dataLength / 3;
+        if( (encodedBlocks + 1) >= (NSUIntegerMax / 4) ) return nil; // NSUInteger overflow check
         NSUInteger padding = paddingTable[dataLength % 3];
         if( padding > 0 ) encodedBlocks++;
         NSUInteger encodedLength = encodedBlocks * 4;
