@@ -19,8 +19,8 @@
 /* Begin PBXFileReference section */
 		0DA2A7BF158CC3EB00A9516B /* MF_AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MF_AppDelegate.h; path = Base64/MF_AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		0DA2A7C0158CC3EB00A9516B /* MF_AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MF_AppDelegate.m; path = Base64/MF_AppDelegate.m; sourceTree = SOURCE_ROOT; };
-		0DA2A7C1158CC3EB00A9516B /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MF_Base64Additions.h; path = Base64/MF_Base64Additions.h; sourceTree = SOURCE_ROOT; };
-		0DA2A7C2158CC3EB00A9516B /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MF_Base64Additions.m; path = Base64/MF_Base64Additions.m; sourceTree = SOURCE_ROOT; };
+		0DA2A7C1158CC3EB00A9516B /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MF_Base64Additions.h; path = ../Source/MF_Base64Additions.h; sourceTree = SOURCE_ROOT; };
+		0DA2A7C2158CC3EB00A9516B /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MF_Base64Additions.m; path = ../Source/MF_Base64Additions.m; sourceTree = SOURCE_ROOT; };
 		0DA2A7CA158CC40700A9516B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Base64/en.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		0DA2A7CC158CC41700A9516B /* Base64-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Base64-Info.plist"; path = "Base64/Base64-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0DA2A7CD158CC41700A9516B /* Base64-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Base64-Prefix.pch"; path = "Base64/Base64-Prefix.pch"; sourceTree = SOURCE_ROOT; };
