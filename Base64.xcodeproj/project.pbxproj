@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		7B0130341D9B6E38005220EB /* Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B0130321D9B6E38005220EB /* Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B1AF8941D9B6EAC0050541D /* MF_Base64Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B1AF8921D9B6EAC0050541D /* MF_Base64Additions.h */; };
+		7B1AF8951D9B6EAC0050541D /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1AF8931D9B6EAC0050541D /* MF_Base64Additions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7B01302F1D9B6E38005220EB /* Base64.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base64.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0130321D9B6E38005220EB /* Base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		7B0130331D9B6E38005220EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B1AF8921D9B6EAC0050541D /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
+		7B1AF8931D9B6EAC0050541D /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +50,20 @@
 		7B0130311D9B6E38005220EB /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
+				7B1AF8911D9B6EAC0050541D /* Source */,
 				7B0130321D9B6E38005220EB /* Base64.h */,
 				7B0130331D9B6E38005220EB /* Info.plist */,
 			);
 			path = Base64;
+			sourceTree = "<group>";
+		};
+		7B1AF8911D9B6EAC0050541D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				7B1AF8921D9B6EAC0050541D /* MF_Base64Additions.h */,
+				7B1AF8931D9B6EAC0050541D /* MF_Base64Additions.m */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,6 +73,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B1AF8941D9B6EAC0050541D /* MF_Base64Additions.h in Headers */,
 				7B0130341D9B6E38005220EB /* Base64.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B1AF8951D9B6EAC0050541D /* MF_Base64Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +194,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -223,7 +239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -286,6 +302,7 @@
 				7B0130391D9B6E38005220EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
