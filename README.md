@@ -19,13 +19,13 @@ $ brew update
 $ brew install carthage
 ```
 
-To integrate Firebase into your Xcode project using Carthage, specify it in your `Cartfile`:
+To integrate Base64 into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
 github "ekscrypto/Base64" 
 ```
 
-Run `carthage update` to build the framework and drag the built `Firebase.framework` into your Xcode project.
+Run `carthage update` to build the framework and drag the built `Base64.framework` into your Xcode project.
 
 
 ### Cococapods
