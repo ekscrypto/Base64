@@ -17,3 +17,4 @@ FOUNDATION_EXPORT const unsigned char Base64VersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <Base64/PublicHeader.h>
 
 
+#import <Base64/MF_Base64Additions.h>

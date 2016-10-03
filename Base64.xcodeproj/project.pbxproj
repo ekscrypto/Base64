@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B0130341D9B6E38005220EB /* Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B0130321D9B6E38005220EB /* Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7B1AF8941D9B6EAC0050541D /* MF_Base64Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B1AF8921D9B6EAC0050541D /* MF_Base64Additions.h */; };
+		7B1AF8941D9B6EAC0050541D /* MF_Base64Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B1AF8921D9B6EAC0050541D /* MF_Base64Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B1AF8951D9B6EAC0050541D /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1AF8931D9B6EAC0050541D /* MF_Base64Additions.m */; };
 /* End PBXBuildFile section */
 
