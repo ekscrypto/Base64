@@ -3,9 +3,22 @@
 Base64 Additions for Objective-C on Mac OS X and iOS
 =======
 
+### Usage: Cococapods
 
-Usage
-----
+Add the following line to your Podfile:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+target '<Your Target Name>' do
+    pod 'Base64'
+end
+```
+
+### Usage: Raw Files
+
 Open the Xcode project file, and drag MF_Base64Additions.m/.h into your project.
 
 In files where you want to use Base64 encoding/decoding, simply include the header file and use one of the provided NSData or NSString additions.
