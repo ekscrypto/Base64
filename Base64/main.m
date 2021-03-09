@@ -3,7 +3,7 @@
 //  Base64
 //
 //  Created by Dave Poirier on 12-06-14.
-//  Copyright (c) 2012 Freshcode. All rights reserved.
+//  Public domain.
 //
 
 #import <Cocoa/Cocoa.h>
