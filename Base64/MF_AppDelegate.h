@@ -10,5 +10,5 @@
 
 @interface MF_AppDelegate : NSObject <NSApplicationDelegate>
 @property (assign) IBOutlet NSWindow *window;
-@property (assign) IBOutlet NSTextField *textField;
+@property (assign) IBOutlet NSTextView *textview;
 @end
