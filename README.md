@@ -6,7 +6,7 @@ Base64 Additions for Objective-C on Mac OS X and iOS
 WARNING: This code is no longer required, base64 comes with all recent versions of macOS, iOS, iPadOS, watchOS and tvOS. Performance metrics below were valid for comparison against the provided libraries in 2012 and may not reflect current performance.  If in doubt, use the system provided functions.
 
 
-### Usage: Cococapods
+### Usage: Cococapods -- DEPRECATED
 
 Add the following line to your Podfile:
 
@@ -43,7 +43,7 @@ Performance
 * Decoding: 5% faster than using the equivalent SecTransform.
 * Decoding: 5% faster than https://github.com/l4u/NSData-Base64
 
-
+Performance metrics are based on evaluation done in 2012 and may no longer be accurate.
 
 Requirements
 -----
