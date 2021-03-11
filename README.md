@@ -3,6 +3,9 @@
 Base64 Additions for Objective-C on Mac OS X and iOS
 =======
 
+WARNING: This code is no longer required, base64 comes with all recent versions of macOS, iOS, iPadOS, watchOS and tvOS. Performance metrics below were valid for comparison against the provided libraries in 2012 and may not reflect current performance.  If in doubt, use the system provided functions.
+
+
 ### Usage: Cococapods
 
 Add the following line to your Podfile:
@@ -45,7 +48,7 @@ Performance
 Requirements
 -----
 * Compile with Automatic Reference Counting
-* Compatible with Mac OSX 10.6+ and iOS 4.0+
+* Compatible with Mac OSX 10.9+ and iOS 4.0+
 
 
 
