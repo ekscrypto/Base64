@@ -10,7 +10,7 @@
 //  Hosted at https://github.com/ekscrypto/Base64
 //
 
-#import "MF_Base64Additions.h"
+#import <Base64/MF_Base64Additions.h>
 
 @implementation MF_Base64Codec
 
