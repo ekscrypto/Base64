@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A883AFC266F663000DAF016 /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A883AFB266F663000DAF016 /* MF_Base64Additions.m */; };
 		0DA2A7C3158CC3EB00A9516B /* MF_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA2A7C0158CC3EB00A9516B /* MF_AppDelegate.m */; };
-		0DA2A7C4158CC3EB00A9516B /* MF_Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA2A7C2158CC3EB00A9516B /* MF_Base64Additions.m */; };
 		0DA2A7CB158CC40700A9516B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DA2A7C9158CC40700A9516B /* MainMenu.xib */; };
 		0DA2A7D0158CC41700A9516B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA2A7CE158CC41700A9516B /* main.m */; };
 		0DA2A7D6158CC43500A9516B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0DA2A7D2158CC43500A9516B /* Credits.rtf */; };
@@ -17,10 +17,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A883AFB266F663000DAF016 /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MF_Base64Additions.m; sourceTree = "<group>"; };
+		0A883B00266F669F00DAF016 /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MF_Base64Additions.h; sourceTree = "<group>"; };
 		0DA2A7BF158CC3EB00A9516B /* MF_AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MF_AppDelegate.h; path = Base64/MF_AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		0DA2A7C0158CC3EB00A9516B /* MF_AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MF_AppDelegate.m; path = Base64/MF_AppDelegate.m; sourceTree = SOURCE_ROOT; };
-		0DA2A7C1158CC3EB00A9516B /* MF_Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MF_Base64Additions.h; path = Base64/MF_Base64Additions.h; sourceTree = SOURCE_ROOT; };
-		0DA2A7C2158CC3EB00A9516B /* MF_Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MF_Base64Additions.m; path = Base64/MF_Base64Additions.m; sourceTree = SOURCE_ROOT; };
 		0DA2A7CC158CC41700A9516B /* Base64-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Base64-Info.plist"; path = "Base64/Base64-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0DA2A7CD158CC41700A9516B /* Base64-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Base64-Prefix.pch"; path = "Base64/Base64-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		0DA2A7CE158CC41700A9516B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Base64/main.m; sourceTree = SOURCE_ROOT; };
@@ -46,6 +46,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A883AF8266F663000DAF016 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0A883AF9266F663000DAF016 /* Base64 */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		0A883AF9266F663000DAF016 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				0A883AFD266F665100DAF016 /* include */,
+				0A883AFB266F663000DAF016 /* MF_Base64Additions.m */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
+		0A883AFD266F665100DAF016 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0A883AFF266F669F00DAF016 /* Base64 */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		0A883AFF266F669F00DAF016 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				0A883B00266F669F00DAF016 /* MF_Base64Additions.h */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
 		0DDF90D7158A1A0F00D44611 = {
 			isa = PBXGroup;
 			children = (
@@ -85,10 +118,9 @@
 		0DDF90EC158A1A0F00D44611 /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
+				0A883AF8266F663000DAF016 /* Sources */,
 				0DA2A7BF158CC3EB00A9516B /* MF_AppDelegate.h */,
 				0DA2A7C0158CC3EB00A9516B /* MF_AppDelegate.m */,
-				0DA2A7C1158CC3EB00A9516B /* MF_Base64Additions.h */,
-				0DA2A7C2158CC3EB00A9516B /* MF_Base64Additions.m */,
 				0DA2A7C9158CC40700A9516B /* MainMenu.xib */,
 				0DDF90ED158A1A0F00D44611 /* Supporting Files */,
 			);
@@ -174,8 +206,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DA2A7C3158CC3EB00A9516B /* MF_AppDelegate.m in Sources */,
-				0DA2A7C4158CC3EB00A9516B /* MF_Base64Additions.m in Sources */,
 				0DA2A7D0158CC41700A9516B /* main.m in Sources */,
+				0A883AFC266F663000DAF016 /* MF_Base64Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
