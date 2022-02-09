@@ -3,6 +3,15 @@
 Base64 Additions for Objective-C on Mac OS X and iOS
 =======
 
+## LICENSING
+
+The project is dual licensed
+* Public Domain
+* MIT
+
+Use it under whichever of these two licensing options that are allowed in your country and you feel the most comfortable with.
+
+## Installation
 WARNING: This code is no longer required, base64 comes with all recent versions of macOS, iOS, iPadOS, watchOS and tvOS. Performance metrics below were valid for comparison against the provided libraries in 2012 and may not reflect current performance.  If in doubt, use the system provided functions.
 
 ### Installation: Swift Package Manager
