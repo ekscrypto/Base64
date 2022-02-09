@@ -1,4 +1,4 @@
-![swift workflow](https://github.com/ekscrypto/Base64/actions/workflows/swift.yml/badge.svg) [![codecov](https://codecov.io/gh/ekscrypto/Base64/branch/master/graph/badge.svg?token=W9KO1BG8S0)](https://codecov.io/gh/ekscrypto/Base64) Public Domain AND [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Issues](https://img.shields.io/github/issues/ekscrypto/Base64) ![Releases](https://img.shields.io/github/v/release/ekscrypto/Base64)
+![swift workflow](https://github.com/ekscrypto/Base64/actions/workflows/swift.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Issues](https://img.shields.io/github/issues/ekscrypto/Base64) ![Releases](https://img.shields.io/github/v/release/ekscrypto/Base64)
 
 Base64 Additions for Objective-C on Mac OS X and iOS
 =======
