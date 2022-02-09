@@ -15,5 +15,16 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build
       run: swift build -v
+
     - name: Run tests
-      run: swift test -v
+      run: swift test -v --enable-code-coverage
+
+    - name: Swift Coverage Conversion
+      uses: sersoft-gmbh/swift-coverage-action@v2.0.1
+      id: coverage-files
+
+    - name: Codecov
+      uses: codecov/codecov-action@v2.1.0
+      with:
+        flags: unittests
+        files: ${{join(fromJSON(steps.coverage-files.outputs.files), ',')}}
