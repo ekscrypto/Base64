@@ -25,7 +25,7 @@ let package = Package(
     name: "MyApp",
     targets: [],
     dependencies: [
-        .Package(url: "https://github.com/ekscrypto/Base64.git", .upToNextMajor(from: "1.2.0"))
+        .Package(url: "https://github.com/ekscrypto/Base64.git", .upToNextMajor(from: "1.2.2"))
     ]
 )
 ```
