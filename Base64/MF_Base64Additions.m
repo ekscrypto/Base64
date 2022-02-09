@@ -7,10 +7,11 @@
 //
 //  Created by Dave Poirier on 2012-06-14.
 //  Public Domain
+//
 //  Hosted at https://github.com/ekscrypto/Base64
 //
 
-#import <Base64/MF_Base64Additions.h>
+#import "MF_Base64Additions.h"
 
 @implementation MF_Base64Codec
 

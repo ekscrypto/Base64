@@ -1,0 +1,4 @@
+module Base64 {
+    header "../MF_Base64Additions.h"
+    export *
+}

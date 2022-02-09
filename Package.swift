@@ -11,7 +11,6 @@ let package = Package(
         .tvOS(.v9),
     ],
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "Base64",
             targets: ["Base64"]
@@ -19,8 +18,13 @@ let package = Package(
     ],
     dependencies: [],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(name: "Base64")
+        .target(
+            name: "Base64",
+            path: "Base64",
+            sources: ["MF_Base64Additions.m"]),
+        .testTarget(
+            name: "Base64Tests",
+            dependencies: ["Base64"],
+            path: "Base64Tests")
     ]
 )
