@@ -12,7 +12,7 @@ The project is dual licensed
 Use it under whichever of these two licensing options that are allowed in your country and you feel the most comfortable with.
 
 ## Installation
-WARNING: This code is no longer required, base64 comes with all recent versions of macOS, iOS, iPadOS, watchOS and tvOS. Performance metrics below were valid for comparison against the provided libraries in 2012 and may not reflect current performance.  If in doubt, use the system provided functions.
+*IMPORTANT* If you have access to Swift libraries, use the built-in Base64 functions. They are faster in most cases.
 
 ### Installation: Swift Package Manager
 
@@ -54,7 +54,9 @@ NSString *helloDecoded = [NSString stringFromBase64String:helloInBase64];
 
 ### Usage: Swift
 
-Using MF_Base64codec directly (fastest)
+*NOT RECOMMENDED: If you have access to the built-in base64 functions offered by Swift, use them.  They are much faster.*
+
+Using MF_Base64codec directly
 
 ```Swift
 let data = "Hello World".data(using: .utf8)!
@@ -71,12 +73,14 @@ let querySafeBase64 = data.base64UrlEncodedString() // SGVsbG8gV29ybGQ
 
 ## Performance
 ----
-* Encoding: Approximately 4 to 5 times faster than using the equivalent SecTransform.
-* Encoding: 30% faster than https://github.com/l4u/NSData-Base64
+* Encoding: 5% *slower* than Swift's built-in Base64 encoding
+* Encoding: 4 to 5 times faster than using the equivalent SecTransform.
+* Encoding: 30% faster than https://github.com/l4u/NSData-Base64 (metric from 2012)
+* Decoding: 4 times *slower* than Swift's built-in Base64 decoding
 * Decoding: 5% faster than using the equivalent SecTransform.
-* Decoding: 5% faster than https://github.com/l4u/NSData-Base64
+* Decoding: 5% faster than https://github.com/l4u/NSData-Base64 (metric from 2012)
 
-Performance metrics are based on evaluation done in 2012 and may no longer be accurate.
+Performance metrics are based on evaluation done in 2022 using macOS, Xcode 13.2.1 and Swift 5.5.2 on a 2.2 GHz 6-Core Intel Core i7 MacBook Pro.
 
 ## Requirements
 -----
@@ -88,9 +92,3 @@ Performance metrics are based on evaluation done in 2012 and may no longer be ac
 ## Implementation
 ----
 * Implemented as per RFC 4648, see http://www.ietf.org/rfc/rfc4648.txt for more details.
-
-
-
-## Licensing
-----
-* Public Domain
