@@ -3,7 +3,7 @@
 //  Base64
 //
 //  Created by Dave Poirier on 2022-02-08.
-//  Public Domain
+//  Dual licensed under the Public Domain and MIT License
 
 @import XCTest;
 @import Base64;

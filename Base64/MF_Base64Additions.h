@@ -6,7 +6,8 @@
 //  Designed to be compiled with Automatic Reference Counting
 //
 //  Created by Dave Poirier on 2012-06-14.
-//  Public Domain
+//  Dual licensed under the Public Domain and MIT License
+//
 //  Hosted at https://github.com/ekscrypto/Base64
 //
 
